@@ -1,0 +1,87 @@
+.cms table.ss-gridfield-table tbody td a.payment-capture-link,
+.cms table.ss-gridfield-table tbody td a.payment-refund-link {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-indent: 9999em;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.cms table.ss-gridfield-table tbody td a.payment-capture-link {
+    background: url(../images/money-add.png) no-repeat 2px 0;
+}
+
+.cms table.ss-gridfield-table tbody td a.payment-refund-link {
+    background: url(../images/money-refund.png) no-repeat 2px 0;
+}
+
+.cms table.ss-gridfield-table tbody td button.gridfield-button-refund,
+.cms table.ss-gridfield-table tbody td button.gridfield-button-capture,
+.cms table.ss-gridfield-table tbody td button.gridfield-button-void {
+    outline: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.cms .ui-icon.btn-icon-button-capture {
+    background: transparent url(../images/money-add.png) no-repeat center center;
+}
+
+.cms .ui-icon.btn-icon-button-refund {
+    background: transparent url(../images/money-refund.png) no-repeat center center;
+}
+
+.cms .ui-icon.btn-icon-button-void {
+    background: transparent url(../images/money-delete.png) no-repeat center center;
+}
+
+.cms .gridfield-button-capture .ui-button-text,
+.cms .gridfield-button-capture .ui-button-text,
+.cms .gridfield-button-capture .ui-button-text
+{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.cms .payment-dialog .ui-dialog-buttonpane {
+    padding: .3em 1em .5em 1em;
+}
+
+.cms .payment-dialog .ui-dialog-buttonset {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cms .payment-dialog button {
+    float: left;
+}
+
+.cms .payment-dialog button:last-of-type {
+    float: right;
+}
+
+.cms .payment-dialog .amount-input {
+    display: table;
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+.cms .payment-dialog .amount-input label,
+.cms .payment-dialog .amount-input span {
+    display: table-cell;
+}
+
+.cms .payment-dialog .amount-input span {
+    text-align: right;
+}
+
+.cms .payment-dialog .amount-input input {
+    font-size: inherit;
+    width: 100%;
+    padding-left: .2em;
+    padding-right: .2em;
+    box-sizing: border-box;
+}

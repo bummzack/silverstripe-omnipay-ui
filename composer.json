@@ -1,0 +1,13 @@
+{
+	"name": "bummzack/silverstripe-omnipay-ui",
+	"description": "SilverStripe Omnipay UI Module",
+	"type": "silverstripe-module",
+	"license": "BSD-3-Clause",
+	"keywords": ["silverstripe","payment","omnipay"],
+	"require": {
+		"silverstripe/silverstripe-omnipay": "~2.0"
+	},
+	"extra": {
+		"installer-name": "omnipay-ui"
+	}
+}
