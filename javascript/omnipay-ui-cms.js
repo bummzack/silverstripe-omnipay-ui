@@ -66,28 +66,6 @@
                 return false;
 			}
 		});
-
-        /*
-        $('.cms a.payment-capture-link').entwine({
-            onclick: function (e) {
-                e.preventDefault();
-                var dialog = $('<div class="payment-dialog"/>');
-                dialog.ssdialog({iframeUrl: this.attr('href'), height: 200});
-
-                dialog.find('iframe').on('load', function(e) {
-                    var contents = $(this).contents();
-
-                    contents.find('.button-cancel').one("click", function(e) {
-                        e.preventDefault();
-                        dialog.ssdialog('close');
-                        return false;
-                    });
-                });
-
-                dialog.ssdialog('open');
-            }
-        });
-        */
     });
 
 }(jQuery));
