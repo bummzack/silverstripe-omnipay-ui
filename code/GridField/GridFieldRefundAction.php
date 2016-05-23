@@ -97,11 +97,8 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
                 return;
             }
 
-            $serviceData = array();
-            if (!empty($data['PaymentAdditionalData'])) {
-                $serviceData['amount'] = $data['PaymentAdditionalData'];
-            }
-
+            $serviceData = array_intersect_key($data, array('amount' => null));
+            
             /** @var ServiceFactory $factory */
             $factory = ServiceFactory::create();
             $refundService = $factory->getService($item, ServiceFactory::INTENT_REFUND);

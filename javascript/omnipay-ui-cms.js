@@ -11,15 +11,7 @@
                 }
 
                 var config = this.data("dialog");
-
                 var self = this;
-                var submitHandler = function (data) {
-                    var dataStr = (typeof data === 'object') ? JSON.stringify(data) : data;
-                    self.parents('form').append(
-                        '<input id="TMP_PaymentField" type="hidden" name="PaymentAdditionalData" value=\'' + dataStr + '\'/>'
-                    ).trigger('submit', [self]);
-                    $("#TMP_PaymentField").remove();
-                };
 
                 var dialog = $("#PaymentDialog").length === 0 ? $('<div id="PaymentDialog"></div>') : $("#PaymentDialog");
 
@@ -33,6 +25,12 @@
                         + ss.i18n._t('PaymentDialog.Amount')
                         + ':</label><span><input type="text" id="PaymentDialog_AmountField" name="amount" value=""/></span>'
                         + '</div>');
+
+                    dialog.on("change, keyup", "input[type=text]", function (e) {
+                        $("#PaymentDialog_ConfirmButton").button(
+                            $(this).val().match(/^\d+\.?\d*$/) ? "enable" : "disable"
+                        );
+                    });
                 }
 
                 dialog.dialog({
@@ -48,14 +46,19 @@
                             }
                         },
                         {
+                            "id" : "PaymentDialog_ConfirmButton",
                             text: ss.i18n._t('PaymentDialog.' + config.buttonTextKey),
                             "data-icon": "accept",
+                            disabled: config.hasAmountField,
                             click: function () {
-
                                 var value = $("#PaymentDialog_AmountField").length > 0
                                     ? ($("#PaymentDialog_AmountField").val() || "-1")
                                     : '';
-                                submitHandler(value);
+
+                                self.getGridField().reload({data: [
+                                    { name: self.attr('name'), value: self.val() },
+                                    { name: "amount", value: value }
+                                ]});
                                 $(this).dialog("destroy");
                             }
                         }
