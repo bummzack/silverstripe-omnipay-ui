@@ -1,5 +1,6 @@
 .cms table.ss-gridfield-table tbody td a.payment-capture-link,
-.cms table.ss-gridfield-table tbody td a.payment-refund-link {
+.cms table.ss-gridfield-table tbody td a.payment-refund-link,
+.cms table.ss-gridfield-table tbody td .payment-pending-indicator {
     display: inline-block;
     width: 20px;
     height: 20px;

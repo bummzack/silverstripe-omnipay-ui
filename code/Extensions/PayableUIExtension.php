@@ -3,6 +3,7 @@
 use SilverStripe\Omnipay\UI\GridField\GridFieldCaptureAction;
 use SilverStripe\Omnipay\UI\GridField\GridFieldRefundAction;
 use SilverStripe\Omnipay\UI\GridField\GridFieldVoidAction;
+use SilverStripe\Omnipay\UI\GridField\GridFieldPaymentStatusIndicator;
 
 /**
  * Data extension to be used in conjunction with the Payable extension from the omnipay module.
@@ -20,11 +21,8 @@ class PayableUIExtension extends DataExtension
             ->removeComponentsByType('GridFieldPageCount')
             ->addComponent(new GridFieldCaptureAction(), 'GridFieldEditButton')
             ->addComponent(new GridFieldRefundAction(), 'GridFieldEditButton')
-            ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton');
-        
-        $gridConfig
-            ->getComponentByType('GridFieldDetailForm')
-            ->setItemRequestClass('SilverStripe\Omnipay\UI\GridField\PaymentItemRequest');
+            ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton')
+            ->addComponent(new GridFieldPaymentStatusIndicator(), 'GridFieldEditButton');
 
         $fields->push(TabSet::create('Root', $paymentTab = new Tab('Payments')));
         $paymentTab->setTitle(_t('PayableUIExtension.PaymentsTab', 'Payments'));

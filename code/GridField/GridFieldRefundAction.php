@@ -10,7 +10,7 @@ use SilverStripe\Omnipay\Exception\Exception;
  *
  * @package SilverStripe\Omnipay\Admin\GridField
  */
-class GridFieldRefundAction extends GridFieldPaymentAction
+class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField_ActionProvider
 {
     /**
      * Which GridField actions are this component handling
@@ -40,6 +40,8 @@ class GridFieldRefundAction extends GridFieldPaymentAction
             return null;
         }
 
+        \Requirements::css('omnipay-ui/css/omnipay-ui-cms.css');
+        \Requirements::javascript('omnipay-ui/javascript/omnipay-ui-cms.js');
         \Requirements::add_i18n_javascript('omnipay-ui/javascript/lang');
 
         $infoText = '';

@@ -3,6 +3,7 @@
 use SilverStripe\Omnipay\UI\GridField\GridFieldCaptureAction;
 use SilverStripe\Omnipay\UI\GridField\GridFieldRefundAction;
 use SilverStripe\Omnipay\UI\GridField\GridFieldVoidAction;
+use SilverStripe\Omnipay\UI\GridField\GridFieldPaymentStatusIndicator;
 
 /**
  * Model admin administration of payments.
@@ -37,8 +38,7 @@ class PaymentAdmin extends ModelAdmin
                 $cfg->addComponent(new GridFieldCaptureAction(), 'GridFieldEditButton')
                     ->addComponent(new GridFieldRefundAction(), 'GridFieldEditButton')
                     ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton')
-                    ->getComponentByType('GridFieldDetailForm')
-                    ->setItemRequestClass('SilverStripe\Omnipay\UI\GridField\PaymentItemRequest');
+                    ->addComponent(new GridFieldPaymentStatusIndicator(), 'GridFieldEditButton');
             }
         }
 

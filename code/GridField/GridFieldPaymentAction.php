@@ -7,7 +7,7 @@ namespace SilverStripe\Omnipay\UI\GridField;
  * Abstract baseclass for payment actions
  * @package SilverStripe\Omnipay\Admin\GridField
  */
-abstract class GridFieldPaymentAction implements \GridField_ColumnProvider, \GridField_ActionProvider
+abstract class GridFieldPaymentAction implements \GridField_ColumnProvider
 {
     /**
      * Add a column 'Capture'
