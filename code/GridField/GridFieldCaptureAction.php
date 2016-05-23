@@ -112,7 +112,6 @@ class GridFieldCaptureAction extends GridFieldPaymentAction
                 $serviceResponse = $captureService->initiate($serviceData);
             } catch (Exception $ex) {
                 throw new \ValidationException($ex->getMessage(), 0);
-                    //_t('GridFieldCaptureAction.CaptureError', 'Unable to capture payment. An error occurred.'), 0);
             }
 
             if ($serviceResponse->isError()) {

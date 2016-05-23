@@ -108,7 +108,6 @@ class GridFieldRefundAction extends GridFieldPaymentAction
                 $serviceResponse = $refundService->initiate($serviceData);
             } catch (Exception $ex) {
                 throw new \ValidationException($ex->getMessage(), 0);
-                    //_t('GridFieldRefundAction.RefundError', 'Unable to refund payment. An error occurred.'), 0);
             }
 
             if ($serviceResponse->isError()) {

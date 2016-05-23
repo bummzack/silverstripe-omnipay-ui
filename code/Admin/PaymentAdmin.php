@@ -36,9 +36,9 @@ class PaymentAdmin extends ModelAdmin
             if ($cfg = $form->Fields()->fieldByName('Payment')->getConfig()) {
                 $cfg->addComponent(new GridFieldCaptureAction(), 'GridFieldEditButton')
                     ->addComponent(new GridFieldRefundAction(), 'GridFieldEditButton')
-                    ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton');/*
+                    ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton')
                     ->getComponentByType('GridFieldDetailForm')
-                    ->setItemRequestClass('SilverStripe\Omnipay\UI\GridField\PaymentItemRequest');*/
+                    ->setItemRequestClass('SilverStripe\Omnipay\UI\GridField\PaymentItemRequest');
             }
         }
 

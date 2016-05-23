@@ -88,8 +88,7 @@ class GridFieldVoidAction extends GridFieldPaymentAction
             try {
                 $serviceResponse = $voidService->initiate();
             } catch (Exception $ex) {
-                throw new \ValidationException(
-                    _t('GridFieldVoidAction.VoidError', 'Unable to void payment. An error occurred.'), 0);
+                throw new \ValidationException($ex->getMessage(), 0);
             }
 
             if ($serviceResponse->isError()) {
