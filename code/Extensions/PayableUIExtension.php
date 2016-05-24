@@ -31,5 +31,4 @@ class PayableUIExtension extends DataExtension
             GridField::create('Payments', _t('Payment.PLURALNAME', 'Payments'), $this->owner->Payments(), $gridConfig)
         );
     }
-
 }

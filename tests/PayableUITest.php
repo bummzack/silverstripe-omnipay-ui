@@ -55,7 +55,6 @@ class PayableUITest extends SapphireTest
         $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldFilterHeader'));
         $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldPageCount'));
     }
-
 }
 
 class PayableUITest_Order extends DataObject implements TestOnly

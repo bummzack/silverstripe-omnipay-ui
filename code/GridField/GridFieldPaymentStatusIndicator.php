@@ -2,7 +2,6 @@
 
 namespace SilverStripe\Omnipay\UI\GridField;
 
-
 class GridFieldPaymentStatusIndicator extends GridFieldPaymentAction implements \GridField_URLHandler
 {
     /**
