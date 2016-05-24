@@ -7,7 +7,6 @@ en:
     Title: 'Refund Payment'
     Description: 'Refund a captured payment'
     RefundError: 'Unable to refund payment. An error occurred.'
-    ConfirmMessage: 'Do you want to fully refund this payment? This action cannot be undone.'
   GridFieldVoidAction:
     Title: 'Void Payment'
     Description: 'Void an authorized payment'
