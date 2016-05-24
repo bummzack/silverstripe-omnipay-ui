@@ -1,0 +1,13 @@
+de:
+  GridFieldCaptureAction:
+    Title: 'Zahlung abbuchen'
+    Description: 'Eine autorisierte Zahlung abbuchen'
+    CaptureError: 'Es ist ein Fehler aufgetreten: Zahlung konnte nicht abgebucht werden.'
+  GridFieldRefundAction:
+    Title: 'Zahlung rückvergüten'
+    Description: 'Eingegangene Zahlung rückvergüten'
+    RefundError: 'Es ist ein Fehler aufgetreten: Zahlung konnte nicht rückvergütet werden.'
+  GridFieldVoidAction:
+    Title: 'Zahlung stornieren'
+    Description: 'Eine autorisierte Zahlung stornieren'
+    VoidError: 'Es ist ein Fehler aufgetreten: Zahlung konnte nicht storniert werden.'

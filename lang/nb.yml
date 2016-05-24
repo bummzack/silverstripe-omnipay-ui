@@ -1,0 +1,13 @@
+nb:
+  GridFieldCaptureAction:
+    Title: 'Gjennomfør betaling'
+    Description: 'Gjennomfør godkjent betaling'
+    CaptureError: 'Ute av stand til å gjennomføre betaling. En error skjedde.'
+  GridFieldRefundAction:
+    Title: 'Tilbakebetal betaling'
+    Description: 'Tilbakebetal ei gjennomført betaling'
+    RefundError: 'Ute av stand til å tilbakebetale betaling. En error skjedde.'
+  GridFieldVoidAction:
+    Title: 'Tøm betaling'
+    Description: 'Tøm en autorisert betaling '
+    VoidError: 'Ute av stand til å tømme betalingen. En error skjedde.'
