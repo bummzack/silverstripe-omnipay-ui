@@ -26,7 +26,7 @@ before_script:
   - cd ~/builds/ss
 
 script:
-  - "if [ \"$COVERAGE\" = \"\" ]; then phpunit -c omnipay-ui/phpunit.xml.dist; fi"
+  - "if [ -n \"$COVERAGE\" ]; then phpunit -c omnipay-ui/phpunit.xml.dist; fi"
   - "if [ \"$COVERAGE\" = \"1\" ]; then phpunit -c omnipay-ui/phpunit.xml.dist --coverage-clover ~/builds/ss/omnipay-ui/coverage.clover; fi"
 
 after_script: ./omnipay-ui/tests/travis/upload_coverage.sh

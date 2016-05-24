@@ -7,6 +7,9 @@
 	"require": {
 		"silverstripe/silverstripe-omnipay": "2.0.x-dev"
 	},
+    "require-dev": {
+        "phpunit/PHPUnit": "~3.7"
+    },
 	"extra": {
 		"installer-name": "omnipay-ui"
 	},
