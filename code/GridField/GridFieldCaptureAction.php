@@ -77,7 +77,6 @@ class GridFieldCaptureAction extends GridFieldPaymentAction implements \GridFiel
                 'maxAmountNum' => $money->getAmount(),
                 'hasAmountField' => $record->canCapture(null, true),
                 'infoTextKey' => $infoText,
-                'checkboxTextKey' => 'CaptureFull',
                 'buttonTextKey' => 'CaptureAmount'
             )))
             ->setDescription(_t('GridFieldCaptureAction.Description', 'Capture authorized Payment'));

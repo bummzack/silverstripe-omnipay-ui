@@ -76,7 +76,6 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
                 'maxAmountNum' => $money->getAmount(),
                 'hasAmountField' => $record->canRefund(null, true),
                 'infoTextKey' => $infoText,
-                'checkboxTextKey' => 'RefundFull',
                 'buttonTextKey' => 'RefundAmount'
             )))
             ->setDescription(_t('GridFieldRefundAction.Description', 'Refund a captured payment'));
