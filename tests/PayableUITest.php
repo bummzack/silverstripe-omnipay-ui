@@ -5,6 +5,8 @@
  */
 class PayableUITest extends SapphireTest
 {
+    protected $extraDataObjects = array('Test_Order');
+
     /**
      * Test the CMS fields added via extension
      */
