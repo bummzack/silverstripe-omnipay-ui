@@ -5,7 +5,21 @@
  */
 class PayableUITest extends SapphireTest
 {
-    protected $extraDataObjects = array('Test_Order');
+    protected $extraDataObjects = array('PayableUITest_Order');
+
+    public function setUpOnce()
+    {
+        Payment::add_extension('PayableUITest_PaymentExtension');
+
+        parent::setUpOnce();
+    }
+
+    public function tearDownOnce()
+    {
+        parent::tearDownOnce();
+
+        Payment::remove_extension('PayableUITest_PaymentExtension');
+    }
 
     /**
      * Test the CMS fields added via extension
@@ -13,8 +27,7 @@ class PayableUITest extends SapphireTest
     public function testCMSFields()
     {
         // Add the payable UI extension to the Test_Order (which us part of the tests from the omnopay module)
-        Config::inst()->update('Test_Order', 'extensions' , array('PayableUIExtension') );
-        $order = new Test_Order();
+        $order = new PayableUITest_Order();
         $fields = $order->getCMSFields();
 
         $this->assertTrue($fields->hasTabSet());
@@ -43,4 +56,19 @@ class PayableUITest extends SapphireTest
         $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldPageCount'));
     }
 
+}
+
+class PayableUITest_Order extends DataObject implements TestOnly
+{
+    private static $extensions = array(
+        'Payable',
+        'PayableUIExtension'
+    );
+}
+
+class PayableUITest_PaymentExtension extends DataExtension implements TestOnly
+{
+    private static $has_one = array(
+        'PayableUITest_Order' => 'PayableUITest_Order'
+    );
 }
