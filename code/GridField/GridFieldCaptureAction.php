@@ -74,8 +74,10 @@ class GridFieldCaptureAction extends GridFieldPaymentAction implements \GridFiel
             ->setAttribute('data-icon', 'button-capture')
             ->setAttribute('data-dialog', json_encode(array(
                 'maxAmount' => $money->Nice(),
+                'maxAmountNum' => $money->getAmount(),
                 'hasAmountField' => $record->canCapture(null, true),
                 'infoTextKey' => $infoText,
+                'checkboxTextKey' => 'CaptureFull',
                 'buttonTextKey' => 'CaptureAmount'
             )))
             ->setDescription(_t('GridFieldCaptureAction.Description', 'Capture authorized Payment'));

@@ -57,6 +57,9 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
                 break;
         }
 
+        /** @var \Money $money */
+        $money = $record->dbObject('Money');
+
         /** @var \GridField_FormAction $field */
         $field = \GridField_FormAction::create(
             $gridField,
@@ -69,9 +72,11 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
             ->setAttribute('title', _t('GridFieldRefundAction.Title', 'Refund Payment'))
             ->setAttribute('data-icon', 'button-refund')
             ->setAttribute('data-dialog', json_encode(array(
-                'maxAmount' => $record->dbObject('Money')->Nice(),
+                'maxAmount' => $money->Nice(),
+                'maxAmountNum' => $money->getAmount(),
                 'hasAmountField' => $record->canRefund(null, true),
                 'infoTextKey' => $infoText,
+                'checkboxTextKey' => 'RefundFull',
                 'buttonTextKey' => 'RefundAmount'
             )))
             ->setDescription(_t('GridFieldRefundAction.Description', 'Refund a captured payment'));
@@ -98,7 +103,7 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
             }
 
             $serviceData = array_intersect_key($data, array('amount' => null));
-            
+
             /** @var ServiceFactory $factory */
             $factory = ServiceFactory::create();
             $refundService = $factory->getService($item, ServiceFactory::INTENT_REFUND);

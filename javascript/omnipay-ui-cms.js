@@ -26,11 +26,30 @@
                         + ':</label><span><input type="text" id="PaymentDialog_AmountField" name="amount" value=""/></span>'
                         + '</div>');
 
-                    dialog.on("change, keyup", "input[type=text]", function (e) {
+                    dialog.append('<div class="amount-checkbox"><label for="PaymentDialog_FullCheckboxField">'
+                        + ss.i18n._t('PaymentDialog.' + config.checkboxTextKey)
+                        + ':</label><span><input type="checkbox" id="PaymentDialog_FullCheckboxField" name="full" value="1"/></span>'
+                        + '</div>');
+
+                    var validate = function(){
+                        var checked = $("#PaymentDialog_FullCheckboxField").is(":checked");
+                        $("#PaymentDialog_AmountField").prop("disabled", checked);
+
+                        if (checked) {
+                            $("#PaymentDialog_AmountField").val("");
+                            $("#PaymentDialog_ConfirmButton").button("enable");
+                            return;
+                        }
+
+                        var numVal = $("#PaymentDialog_AmountField").val();
                         $("#PaymentDialog_ConfirmButton").button(
-                            $(this).val().match(/^\d+\.?\d*$/) ? "enable" : "disable"
+                            numVal.match(/^\d+\.?\d*$/) && parseFloat(numVal) <= config.maxAmountNum ? "enable" : "disable"
                         );
-                    });
+                    };
+
+                    dialog
+                        .on("change, keyup", "input[type=text]", validate)
+                        .on("change", "input[type=checkbox]", validate);
                 }
 
                 dialog.dialog({
@@ -51,7 +70,7 @@
                             "data-icon": "accept",
                             disabled: config.hasAmountField,
                             click: function () {
-                                var value = $("#PaymentDialog_AmountField").length > 0
+                                var value = ($("#PaymentDialog_AmountField").length > 0 && $("#PaymentDialog_FullCheckboxField").is(":checked") == false)
                                     ? ($("#PaymentDialog_AmountField").val() || "-1")
                                     : '';
 
@@ -59,6 +78,7 @@
                                     { name: self.attr('name'), value: self.val() },
                                     { name: "amount", value: value }
                                 ]});
+                                
                                 $(this).dialog("destroy");
                             }
                         }

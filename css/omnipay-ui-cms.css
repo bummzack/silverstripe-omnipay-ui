@@ -86,3 +86,7 @@
     padding-right: .2em;
     box-sizing: border-box;
 }
+
+.cms .payment-dialog .amount-checkbox {
+    margin-top: 0.5em;
+}
