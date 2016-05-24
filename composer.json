@@ -5,9 +5,11 @@
 	"license": "BSD-3-Clause",
 	"keywords": ["silverstripe","payment","omnipay"],
 	"require": {
-		"silverstripe/silverstripe-omnipay": "~2.0"
+		"silverstripe/silverstripe-omnipay": "2.0.x-dev"
 	},
 	"extra": {
 		"installer-name": "omnipay-ui"
-	}
+	},
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
