@@ -86,6 +86,12 @@
                 this._super();
             },
 
+            reload: function(ajaxOpts, successCallback) {
+                // clear any running timeout before reloading
+                this._clearTimeout();
+                this._super(ajaxOpts, successCallback);
+            },
+
             onreload: function () {
                 this._super();
                 this.refreshPendingPayments(2000);
@@ -122,6 +128,7 @@
             _clearTimeout: function () {
                 if (this.data("payment-timeout")) {
                     window.clearTimeout(this.data("payment-timeout"));
+                    this.data("payment-timeout", null);
                 }
             }
         });

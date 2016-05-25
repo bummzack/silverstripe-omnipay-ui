@@ -39,8 +39,8 @@
 }
 
 .cms .gridfield-button-capture .ui-button-text,
-.cms .gridfield-button-capture .ui-button-text,
-.cms .gridfield-button-capture .ui-button-text
+.cms .gridfield-button-refund .ui-button-text,
+.cms .gridfield-button-void .ui-button-text
 {
     padding-left: 1em;
     padding-right: 1em;
