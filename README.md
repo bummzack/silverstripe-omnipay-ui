@@ -25,6 +25,10 @@ This module contains the "Payments" ModelAdmin that was originally part of the o
 composer require bummzack/silverstripe-omnipay-ui
 ```
 
+## Payment administration
+
+Read the [Payment administration guide](docs/en/userdoc.md)
+
 ## Attributions
 
  - Icons used in the CMS are part of the [Silk Icon set 1.3](http://www.famfamfam.com/lab/icons/silk/). [Creative Commons Attribution 2.5 License](http://creativecommons.org/licenses/by/2.5/)
