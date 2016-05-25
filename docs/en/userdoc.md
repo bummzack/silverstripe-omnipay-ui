@@ -10,7 +10,7 @@ There you'll find a list of all payments that went through the SilverStripe Omni
 
 ## Payment actions
 
-There are several actions that can be performed on payments. The actions available to you are mainly dependent on the current payment-status. Limitations of the payment-gateway or [security restrictions](#security) can further restrict the possible actions. The actions will show up in the payments GridField. Here's an example:
+There are several actions that can be performed on payments. The actions available to you are mainly dependent on the current payment-status. Limitations of the payment-gateway or [security restrictions](#security-settings) can further restrict the possible actions. The actions will show up in the payments GridField. Here's an example:
 
 ![GridField](images/payment-authorized.png "Authorized payment with actions")
 
@@ -18,7 +18,7 @@ There are several actions that can be performed on payments. The actions availab
 
 Please note, that none of these buttons will perform an action immediately. All of them will open a dialog that requires confirmation!
 
-| Action | Button | Description 
+| Action | Button | Description
 | ------ | -------| ----
 | **[Capture](#capture)** | ![Capture](images/money-add.png "Capture action icon") | Capture an *Authorized* payment. Only the captured amount will be charged from the payers credit-card! Depending on the gateway capabilities, you can either: Only capture the *full amount*, capture a variable amount *once* or capture variable amounts *multiple times*.
 | **[Void](#void)** | ![Void](images/money-delete.png "Void action icon") | Void an *Authorized* payment. This will cancel an authorized payment. The funds will never be charged from the payers credit-card.
@@ -67,7 +67,7 @@ Confirm by clicking the "Void payment" button. The payment will change its statu
 ### Refund
 
 Refund a captured payment. The funds will be returned to the payer. In the image below you see a payment that was captured and can be refunded:
- 
+
 ![Captured Payment](images/payment-captured.png "Captured payment")
 
 When clicking the "Refund" button in the CMS, a dialog will open:
