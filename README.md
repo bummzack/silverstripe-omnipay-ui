@@ -26,6 +26,18 @@ This module contains the "Payments" ModelAdmin that was originally part of the o
 composer require bummzack/silverstripe-omnipay-ui
 ```
 
+### Adding the PayableUIExtension (optional)
+
+If you have a `Payable` DataObject, eg. you added the `Payable` extension from the Omnipay module to some of your classes, you might also want to add the `PayableUIExtension`, which adds a GridField component to manipulate Payments.
+
+So if you're running [SilverShop](https://packagist.org/packages/silvershop/core), you should also add the following to your `config.yml`
+
+```yaml
+Order:
+  extensions:
+    - PayableUIExtension
+```
+
 ## Payment administration
 
 Read the [Payment administration guide](docs/en/userdoc.md)
