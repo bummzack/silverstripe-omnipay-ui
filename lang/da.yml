@@ -1,0 +1,13 @@
+da:
+  GridFieldCaptureAction:
+    Title: 'Hæv betaling'
+    Description: 'Hæv autoriseret betaling'
+    CaptureError: 'Kunne ikke hæve beløbet. Der skete en fejl.'
+  GridFieldRefundAction:
+    Title: 'Refunder betaling'
+    Description: 'Refunder en hævet betaling'
+    RefundError: 'Kunne ikke refundere betalingen. Der skete en fejl.'
+  GridFieldVoidAction:
+    Title: 'Annuller betaling'
+    Description: 'Annuller en autoriseret betaling'
+    VoidError: 'Kunne ikke annullere betalingen. Der skete en fejl.'
