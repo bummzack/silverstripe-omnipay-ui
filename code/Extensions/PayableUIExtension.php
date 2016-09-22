@@ -24,9 +24,6 @@ class PayableUIExtension extends DataExtension
             ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton')
             ->addComponent(new GridFieldPaymentStatusIndicator(), 'GridFieldEditButton');
 
-        $fields->push(TabSet::create('Root', $paymentTab = new Tab('Payments')));
-        $paymentTab->setTitle(_t('PayableUIExtension.PaymentsTab', 'Payments'));
-
         $fields->addFieldToTab('Root.Payments',
             GridField::create('Payments', _t('Payment.PLURALNAME', 'Payments'), $this->owner->Payments(), $gridConfig)
         );
