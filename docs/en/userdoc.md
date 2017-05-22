@@ -20,13 +20,13 @@ Please note, that none of these buttons will perform an action immediately. All 
 
 | Action | Button | Description
 | ------ | -------| ----
-| **[Capture](#capture)** | ![Capture](images/money-add.png "Capture action icon") | Capture an *Authorized* payment. Only the captured amount will be charged from the payers credit-card! Depending on the gateway capabilities, you can either: Only capture the *full amount*, capture a variable amount *once* or capture variable amounts *multiple times*.
-| **[Void](#void)** | ![Void](images/money-delete.png "Void action icon") | Void an *Authorized* payment. This will cancel an authorized payment. The funds will never be charged from the payers credit-card.
+| **[Capture](#capture)** | ![Capture](images/money-add.png "Capture action icon") | Capture an *Authorized* payment. Only the captured amount will be charged to the payers credit-card! Depending on the gateway capabilities, you can either: Only capture the *full amount*, capture a variable amount *once* or capture variable amounts *multiple times*.
+| **[Void](#void)** | ![Void](images/money-delete.png "Void action icon") | Void an *Authorized* payment. This will cancel an authorized payment. The funds will never be charged to the payers credit-card.
 | **[Refund](#refund)** | ![Refund](images/money-refund.png "Refund action icon") | Refund a *Captured* payment. The funds will be returned to the payer. Depending on the gateway capabilities, you can either: Only refund the *full amount*, refund a variable amount *once* or refund variable amounts *multiple times*. **Please note, that some payment-providers will add a fee to refunds!**
 
 ### Capture
 
-Captures an authorized payment. Only the captured amount will be charged from the payers credit-card!
+Captures an authorized payment. Only the captured amount will be charged to the payers credit-card!
 
 ![Authorized Payment](images/payment-authorized.png "Authorized payment with actions")
 
@@ -56,7 +56,7 @@ Some gateways allow multiple partial captures, which will show a dialog like thi
 
 ### Void
 
-Void an authorized payment. This will cancel an authorized payment. The funds will never be charged from the payers credit-card.
+Void an authorized payment. This will cancel an authorized payment. The funds will never be charged to the payers credit-card.
 
 When clicking the "Void" button in the CMS, a dialog will open:
 
