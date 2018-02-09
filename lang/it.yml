@@ -1,13 +1,17 @@
 it:
-  GridFieldCaptureAction:
+  Bummzack\SsOmnipayUI\Admin\PaymentAdmin:
+    MENUTITLE: Pagamenti
+  Bummzack\SsOmnipayUI\Extensions\PayableUIExtension:
+    PaymentsTab: Pagamenti
+  Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction:
     Title: 'Cattura Pagamento'
     Description: 'Cattura un pagamento autorizzato'
     CaptureError: 'Impossibile catturare il pagamento a causa di un errore.'
-  GridFieldRefundAction:
+  Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction:
     Title: 'Rimborsa Pagamento'
     Description: 'Rimborsa un pagamento catturato'
     RefundError: 'Impossibile rimborsare il pagamento a causa di un errore.'
-  GridFieldVoidAction:
+  Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction:
     Title: 'Annulla Pagamento'
     Description: 'Annulla un pagamento autorizzato'
     VoidError: 'Impossibile annullare il pagamento a causa di un errore.'

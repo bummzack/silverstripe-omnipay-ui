@@ -1,0 +1,14 @@
+mappings:
+  PaymentAdmin: Bummzack\SsOmnipayUI\Admin\PaymentAdmin
+  PayableUIExtension: Bummzack\SsOmnipayUI\Extensions\PayableUIExtension
+
+  SilverStripe\Omnipay\UI\GridField\GridFieldCaptureAction: Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction
+  SilverStripe\Omnipay\UI\GridField\GridFieldPaymentStatusIndicator: Bummzack\SsOmnipayUI\GridField\GridFieldPaymentStatusIndicator
+  SilverStripe\Omnipay\UI\GridField\GridFieldRefundAction: Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction
+  SilverStripe\Omnipay\UI\GridField\GridFieldVoidAction: Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction
+
+  GridFieldPaymentActionsTest: Bummzack\SsOmnipayUI\Tests\GridField\GridFieldPaymentActionsTest
+  PayableUITest: Bummzack\SsOmnipayUI\Tests\PayableUITest
+  PayableUITest_Order: Bummzack\SsOmnipayUI\Tests\PayableUITestOrder
+  PayableUITest_PaymentExtension: Bummzack\SsOmnipayUI\PayableUITest_PaymentExtension
+

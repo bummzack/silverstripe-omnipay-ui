@@ -1,21 +1,29 @@
 <?php
-namespace SilverStripe\Omnipay\UI\GridField;
+namespace Bummzack\SsOmnipayUI\GridField;
 
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridField_ActionProvider;
+use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Omnipay\GatewayInfo;
+use SilverStripe\Omnipay\Model\Payment;
 use SilverStripe\Omnipay\Service\ServiceFactory;
 use SilverStripe\Omnipay\Exception\Exception;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBMoney;
+use SilverStripe\ORM\ValidationException;
+use SilverStripe\View\Requirements;
 
 /**
  * A GridField button that can be used to refund a payment
  *
  * @package SilverStripe\Omnipay\Admin\GridField
  */
-class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField_ActionProvider
+class GridFieldRefundAction extends GridFieldPaymentAction implements GridField_ActionProvider
 {
     /**
      * Which GridField actions are this component handling
      *
-     * @param \GridField $gridField
+     * @param GridField $gridField
      * @return array
      */
     public function getActions($gridField)
@@ -25,14 +33,14 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
 
     /**
      *
-     * @param \GridField $gridField
-     * @param \DataObject $record
+     * @param GridField $gridField
+     * @param DataObject $record
      * @param string $columnName
      * @return string|null - the HTML for the column
      */
     public function getColumnContent($gridField, $record, $columnName)
     {
-        if (!($record instanceof \Payment)) {
+        if (!($record instanceof Payment)) {
             return null;
         }
 
@@ -40,9 +48,9 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
             return null;
         }
 
-        \Requirements::css('omnipay-ui/css/omnipay-ui-cms.css');
-        \Requirements::javascript('omnipay-ui/javascript/omnipay-ui-cms.js');
-        \Requirements::add_i18n_javascript('omnipay-ui/javascript/lang');
+        Requirements::css('bummzack/silverstripe-omnipay-ui: client/dist/css/omnipay-ui-cms.css');
+        Requirements::javascript('bummzack/silverstripe-omnipay-ui: client/dist/javascript/omnipay-ui-cms.js');
+        Requirements::add_i18n_javascript('bummzack/silverstripe-omnipay-ui: client/dist/javascript/lang');
 
         $infoText = '';
         switch (GatewayInfo::refundMode($record->Gateway)) {
@@ -57,11 +65,11 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
                 break;
         }
 
-        /** @var \Money $money */
+        /** @var DBMoney $money */
         $money = $record->dbObject('Money');
 
-        /** @var \GridField_FormAction $field */
-        $field = \GridField_FormAction::create(
+        /** @var GridField_FormAction $field */
+        $field = GridField_FormAction::create(
             $gridField,
             'RefundPayment' . $record->ID,
             false,
@@ -86,18 +94,19 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
     /**
      * Handle the actions and apply any changes to the GridField
      *
-     * @param \GridField $gridField
+     * @param GridField $gridField
      * @param string $actionName
      * @param mixed $arguments
      * @param array $data - form data
      * @return void
-     * @throws \ValidationException when there was an error
+     * @throws ValidationException when there was an error
+     * @throws \SilverStripe\Omnipay\Exception\InvalidConfigurationException
      */
-    public function handleAction(\GridField $gridField, $actionName, $arguments, $data)
+    public function handleAction(GridField $gridField, $actionName, $arguments, $data)
     {
         if ($actionName == 'refundpayment') {
             $item = $gridField->getList()->byID($arguments['RecordID']);
-            if (!($item instanceof \Payment)) {
+            if (!($item instanceof Payment)) {
                 return;
             }
 
@@ -110,12 +119,14 @@ class GridFieldRefundAction extends GridFieldPaymentAction implements \GridField
             try {
                 $serviceResponse = $refundService->initiate($serviceData);
             } catch (Exception $ex) {
-                throw new \ValidationException($ex->getMessage(), 0);
+                throw new ValidationException($ex->getMessage(), 0);
             }
 
             if ($serviceResponse->isError()) {
-                throw new \ValidationException(
-                    _t('GridFieldRefundAction.RefundError', 'Unable to refund payment. An error occurred.'), 0);
+                throw new ValidationException(
+                    _t('GridFieldRefundAction.RefundError', 'Unable to refund payment. An error occurred.'),
+                    0
+                );
             }
         }
     }

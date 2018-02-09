@@ -1,24 +1,31 @@
 <?php
 
+namespace Bummzack\SsOmnipayUI\Tests;
+
+use Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction;
+use Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction;
+use Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldEditButton;
+use SilverStripe\Forms\GridField\GridFieldFilterHeader;
+use SilverStripe\Forms\GridField\GridFieldPageCount;
+use SilverStripe\Omnipay\Model\Payment;
+
 /**
  * Test the Payable extension
  */
 class PayableUITest extends SapphireTest
 {
-    protected $extraDataObjects = array('PayableUITest_Order');
+    protected $extraDataObjects = [PayableUITestOrder::class];
 
-    public function setUpOnce()
+    public function setUp()
     {
-        Payment::add_extension('PayableUITest_PaymentExtension');
-
-        parent::setUpOnce();
-    }
-
-    public function tearDownOnce()
-    {
-        parent::tearDownOnce();
-
-        Payment::remove_extension('PayableUITest_PaymentExtension');
+        parent::setUp();
+        Config::modify()->set(Payment::class, 'extensions', PayableUITestPaymentExtension::class);
     }
 
     /**
@@ -26,8 +33,8 @@ class PayableUITest extends SapphireTest
      */
     public function testCMSFields()
     {
-        // Add the payable UI extension to the Test_Order (which us part of the tests from the omnopay module)
-        $order = new PayableUITest_Order();
+        // Add the payable UI extension to the Test_Order (which us part of the tests from the omnipay module)
+        $order = new PayableUITestOrder();
         $fields = $order->getCMSFields();
 
         $this->assertTrue($fields->hasTabSet());
@@ -35,39 +42,24 @@ class PayableUITest extends SapphireTest
         /** @var GridField $gridField */
         $gridField = $fields->fieldByName('Root.Payments.Payments');
 
-        $this->assertInstanceOf('GridField', $gridField);
+        $this->assertInstanceOf(GridField::class, $gridField);
 
         // Check the actions/buttons that should be in place
-        $this->assertNotNull($gridField->getConfig()->getComponentByType('GridFieldEditButton'));
+        $this->assertNotNull($gridField->getConfig()->getComponentByType(GridFieldEditButton::class));
         $this->assertNotNull($gridField->getConfig()->getComponentByType(
-            'SilverStripe\Omnipay\UI\GridField\GridFieldCaptureAction'
+            GridFieldCaptureAction::class
         ));
         $this->assertNotNull($gridField->getConfig()->getComponentByType(
-            'SilverStripe\Omnipay\UI\GridField\GridFieldRefundAction'
+            GridFieldRefundAction::class
         ));
         $this->assertNotNull($gridField->getConfig()->getComponentByType(
-            'SilverStripe\Omnipay\UI\GridField\GridFieldVoidAction'
+            GridFieldVoidAction::class
         ));
 
         // check the actions buttons that should be removed
-        $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldAddNewButton'));
-        $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldDeleteAction'));
-        $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldFilterHeader'));
-        $this->assertNull($gridField->getConfig()->getComponentByType('GridFieldPageCount'));
+        $this->assertNull($gridField->getConfig()->getComponentByType(GridFieldAddNewButton::class));
+        $this->assertNull($gridField->getConfig()->getComponentByType(GridFieldDeleteAction::class));
+        $this->assertNull($gridField->getConfig()->getComponentByType(GridFieldFilterHeader::class));
+        $this->assertNull($gridField->getConfig()->getComponentByType(GridFieldPageCount::class));
     }
-}
-
-class PayableUITest_Order extends DataObject implements TestOnly
-{
-    private static $extensions = array(
-        'Payable',
-        'PayableUIExtension'
-    );
-}
-
-class PayableUITest_PaymentExtension extends DataExtension implements TestOnly
-{
-    private static $has_one = array(
-        'PayableUITest_Order' => 'PayableUITest_Order'
-    );
 }

@@ -1,9 +1,14 @@
 <?php
 
-use SilverStripe\Omnipay\UI\GridField\GridFieldCaptureAction;
-use SilverStripe\Omnipay\UI\GridField\GridFieldRefundAction;
-use SilverStripe\Omnipay\UI\GridField\GridFieldVoidAction;
-use SilverStripe\Omnipay\UI\GridField\GridFieldPaymentStatusIndicator;
+namespace Bummzack\SsOmnipayUI\Admin;
+
+use Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction;
+use Bummzack\SsOmnipayUI\GridField\GridFieldPaymentStatusIndicator;
+use Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction;
+use Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction;
+use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Omnipay\Model\Payment;
 
 /**
  * Model admin administration of payments.
@@ -15,13 +20,13 @@ class PaymentAdmin extends ModelAdmin
 
     private static $menu_title = 'Payments';
     private static $url_segment = 'payments';
-    private static $menu_icon = 'omnipay-ui/images/payment-admin.png';
+    private static $menu_icon = 'bummzack/silverstripe-omnipay-ui: client/dist/images/payment-admin.png';
     private static $menu_priority = 1;
 
     public $showImportForm = false;
 
     private static $managed_models = array(
-        'Payment'
+        Payment::class
     );
 
     public function alternateAccessCheck()
@@ -32,9 +37,9 @@ class PaymentAdmin extends ModelAdmin
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm($id, $fields);
-        if ($this->modelClass == 'Payment') {
+        if ($this->modelClass == Payment::class) {
             /** @var GridFieldConfig $cfg */
-            if ($cfg = $form->Fields()->fieldByName('Payment')->getConfig()) {
+            if ($cfg = $form->Fields()->fieldByName($this->sanitiseClassName(Payment::class))->getConfig()) {
                 $cfg->addComponent(new GridFieldCaptureAction(), 'GridFieldEditButton')
                     ->addComponent(new GridFieldRefundAction(), 'GridFieldEditButton')
                     ->addComponent(new GridFieldVoidAction(), 'GridFieldEditButton')

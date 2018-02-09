@@ -11,11 +11,13 @@ This module contains the "Payments" ModelAdmin that was originally part of the o
 
 ## Version
 
-0.1
+1.0 (in development) for SilverStripe 4
+
+For a SilverStripe 3 compatible version, please use 0.1.x
 
 ## Requirements
 
- * [silverstripe-omnipay](https://github.com/silverstripe/silverstripe-omnipay) 2.0+ including its dependencies.
+ * [silverstripe-omnipay](https://github.com/silverstripe/silverstripe-omnipay) 3.0+ including its dependencies.
 
 
 ## Installation
@@ -23,7 +25,7 @@ This module contains the "Payments" ModelAdmin that was originally part of the o
 [Composer](http://doc.silverstripe.org/framework/en/installation/composer) is currently the only supported way to set up this module:
 
 ```
-composer require bummzack/silverstripe-omnipay-ui
+composer require bummzack/silverstripe-omnipay-ui ^1@dev
 ```
 
 ### Adding the PayableUIExtension (optional)
@@ -33,9 +35,9 @@ If you have a `Payable` DataObject, eg. you added the `Payable` extension from t
 So if you're running [SilverShop](https://packagist.org/packages/silvershop/core), you should also add the following to your `config.yml`
 
 ```yaml
-Order:
+SilverShop\Model\Order:
   extensions:
-    - PayableUIExtension
+    - Bummzack\SsOmnipayUI\Extensions\PayableUIExtension
 ```
 
 ## Payment administration

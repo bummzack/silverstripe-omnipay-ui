@@ -1,5 +1,9 @@
 <?php
-namespace SilverStripe\Omnipay\UI\Tasks;
+
+namespace Bummzack\SsOmnipayUI\Tasks;
+
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Dev\BuildTask;
 
 /**
  * Creates JavaScript files ready for consumption by framework/javascript/i18n.js,
@@ -8,12 +12,12 @@ namespace SilverStripe\Omnipay\UI\Tasks;
  * supports, while retaining the ability to combine JavaScript files in SilverStripe
  * without resorting to JSONP or other means of processing raw JSON files.
  */
-class GenerateJavascriptI18nTask extends \BuildTask
+class GenerateJavascriptI18nTask extends BuildTask
 {
 
     private $modulePath;
-    private $sourceDir = 'javascript/lang/src';
-    private $targetDir = 'javascript/lang';
+    private $sourceDir = 'client/dist/javascript/lang/src';
+    private $targetDir = 'client/dist/javascript/lang';
 
     public function __construct()
     {
@@ -41,7 +45,7 @@ TMPL;
     }
 
     /**
-     * @param \SS_HTTPRequest $request
+     * @param HTTPRequest $request
      * @throws \Exception
      */
     public function run($request)

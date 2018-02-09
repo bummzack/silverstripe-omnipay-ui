@@ -1,0 +1,14 @@
+{
+    "PaymentDialog.MultiCaptureInfo" : "You can capture up to {Amount}.",
+    "PaymentDialog.SingleCaptureInfo" : "You can capture up to {Amount}. Further captures on this payment aren't possible, make sure to capture exactly the required amount!",
+    "PaymentDialog.FullCaptureInfo" : "You're about to capture {Amount}. This action cannot be undone.",
+    "PaymentDialog.CaptureAmount" : "Capture amount",
+    "PaymentDialog.MultiRefundInfo" : "You can refund up to {Amount}.",
+    "PaymentDialog.SingleRefundInfo" : "You can refund up to {Amount}. Further refunds on this payment aren't possible, make sure to refund exactly the required amount!",
+    "PaymentDialog.FullRefundInfo" : "You're about to refund {Amount}. This action cannot be undone.",
+    "PaymentDialog.RefundAmount" : "Iznos povrata sredstava",
+    "PaymentDialog.VoidInfo" : "Poništi ovu uplatu ({Amount}). Ova radnja se ne može poništiti.",
+    "PaymentDialog.VoidPayment" : "Poništi uplatu",
+    "PaymentDialog.Cancel" : "Odustani",
+    "PaymentDialog.Amount" : "Iznos"
+}

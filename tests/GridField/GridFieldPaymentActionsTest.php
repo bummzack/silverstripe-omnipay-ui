@@ -1,8 +1,22 @@
 <?php
 
-use SilverStripe\Omnipay\UI\GridField\GridFieldCaptureAction;
-use SilverStripe\Omnipay\UI\GridField\GridFieldRefundAction;
-use SilverStripe\Omnipay\UI\GridField\GridFieldVoidAction;
+namespace Bummzack\SsOmnipayUI\Tests\GridField;
+
+use Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction;
+use Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction;
+use Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction;
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\CSSContentParser;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Omnipay\GatewayInfo;
+use SilverStripe\Omnipay\Model\Payment;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 
 /**
  * Test payment actions in GridFields
@@ -25,14 +39,18 @@ class GridFieldPaymentActionsTest extends SapphireTest
     public function setUp()
     {
         parent::setUp();
-        $this->list = new DataList('Payment');
+        $this->list = new DataList(Payment::class);
         $config = GridFieldConfig::create()
             ->addComponent(new GridFieldCaptureAction())
             ->addComponent(new GridFieldRefundAction())
             ->addComponent(new GridFieldVoidAction());
         $this->gridField = new GridField('testfield', 'testfield', $this->list, $config);
+
+
+        $ctrl = new Controller();
+        $ctrl::config()->set('url_segment', 'mock');
         $this->form = new Form(
-            new Controller(),
+            $ctrl,
             'mockform',
             new FieldList(array($this->gridField)),
             new FieldList()
@@ -56,7 +74,7 @@ class GridFieldPaymentActionsTest extends SapphireTest
         $this->assertEquals(2, count($content->getBySelector('.gridfield-button-void')));
 
         // Disallow actions for Manual Gateway
-        Config::inst()->update('GatewayInfo', 'Manual', array(
+        Config::modify()->merge(GatewayInfo::class, 'Manual', array(
            'can_capture' => false,
            'can_refund' => false,
            'can_void' => false
@@ -74,7 +92,7 @@ class GridFieldPaymentActionsTest extends SapphireTest
         $this->assertEquals(1, count($content->getBySelector('.gridfield-button-void')));
 
         // Update the authorized PaymentExpress_PxPay payment to Void
-        $payment = $this->objFromFixture('Payment', 'payment3');
+        $payment = $this->objFromFixture(Payment::class, 'payment3');
         $payment->Status = 'Void';
         $payment->write();
 

@@ -1,4 +1,4 @@
-Payment:
+SilverStripe\Omnipay\Model\Payment:
   payment1:
     Gateway: Manual
     MoneyAmount: 20.23

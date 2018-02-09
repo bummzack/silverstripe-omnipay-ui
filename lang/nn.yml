@@ -1,13 +1,15 @@
 nn:
-  GridFieldCaptureAction:
+  Bummzack\SsOmnipayUI\Admin\PaymentAdmin:
+    MENUTITLE: Betalingar
+  Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction:
     Title: 'Gjennomfør betaling'
     Description: 'Gjennomfør autorisert betaling'
     CaptureError: 'Ute av stand til å gjennomføre betaling. Ein error har skjedd.'
-  GridFieldRefundAction:
+  Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction:
     Title: 'Tilbakebetal betaling'
     Description: 'Tilbakebetal ei gjennomført betaling'
     RefundError: 'Ute av stand til å tilbakebetale betaling. Ein error skjedde.'
-  GridFieldVoidAction:
+  Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction:
     Title: 'Tøm betaling'
     Description: 'Tøm ein autorisert betaling'
     VoidError: 'Ute av stand til å tømma betalinga. Ein error skjedde.'

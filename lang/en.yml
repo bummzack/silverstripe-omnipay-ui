@@ -1,13 +1,17 @@
 en:
-  GridFieldCaptureAction:
+  Bummzack\SsOmnipayUI\Admin\PaymentAdmin:
+    MENUTITLE: Payments
+  Bummzack\SsOmnipayUI\Extensions\PayableUIExtension:
+    PaymentsTab: Payments
+  Bummzack\SsOmnipayUI\GridField\GridFieldCaptureAction:
     Title: 'Capture Payment'
     Description: 'Capture authorized Payment'
     CaptureError: 'Unable to capture payment. An error occurred.'
-  GridFieldRefundAction:
+  Bummzack\SsOmnipayUI\GridField\GridFieldRefundAction:
     Title: 'Refund Payment'
     Description: 'Refund a captured payment'
     RefundError: 'Unable to refund payment. An error occurred.'
-  GridFieldVoidAction:
+  Bummzack\SsOmnipayUI\GridField\GridFieldVoidAction:
     Title: 'Void Payment'
     Description: 'Void an authorized payment'
     VoidError: 'Unable to void payment. An error occurred.'

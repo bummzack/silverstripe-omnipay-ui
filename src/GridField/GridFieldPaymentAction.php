@@ -1,18 +1,22 @@
 <?php
 
 
-namespace SilverStripe\Omnipay\UI\GridField;
+namespace Bummzack\SsOmnipayUI\GridField;
+
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridField_ColumnProvider;
+use SilverStripe\ORM\DataObject;
 
 /**
  * Abstract baseclass for payment actions
  * @package SilverStripe\Omnipay\Admin\GridField
  */
-abstract class GridFieldPaymentAction implements \GridField_ColumnProvider
+abstract class GridFieldPaymentAction implements GridField_ColumnProvider
 {
     /**
      * Add a column 'Capture'
      *
-     * @param \GridField $gridField
+     * @param GridField $gridField
      * @param array $columns
      */
     public function augmentColumns($gridField, &$columns)
@@ -25,8 +29,8 @@ abstract class GridFieldPaymentAction implements \GridField_ColumnProvider
     /**
      * Return any special attributes that will be used for FormField::create_tag()
      *
-     * @param \GridField $gridField
-     * @param \DataObject $record
+     * @param GridField $gridField
+     * @param DataObject $record
      * @param string $columnName
      * @return array
      */
@@ -38,7 +42,7 @@ abstract class GridFieldPaymentAction implements \GridField_ColumnProvider
     /**
      * Add the title
      *
-     * @param \GridField $gridField
+     * @param GridField $gridField
      * @param string $columnName
      * @return array
      */
@@ -52,7 +56,7 @@ abstract class GridFieldPaymentAction implements \GridField_ColumnProvider
     /**
      * Which columns are handled by this component
      *
-     * @param \GridField $gridField
+     * @param GridField $gridField
      * @return array
      */
     public function getColumnsHandled($gridField)
