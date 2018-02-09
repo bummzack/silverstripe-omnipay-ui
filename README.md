@@ -1,7 +1,7 @@
 # silverstripe-omnipay-ui
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bummzack/silverstripe-omnipay-ui/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bummzack/silverstripe-omnipay-ui/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/bummzack/silverstripe-omnipay-ui/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bummzack/silverstripe-omnipay-ui/?branch=master)
+[![Code Coverage](https://codecov.io/gh/bummzack/silverstripe-omnipay-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/bummzack/silverstripe-omnipay-ui)
 [![Build Status](https://travis-ci.org/bummzack/silverstripe-omnipay-ui.svg?branch=master)](https://travis-ci.org/bummzack/silverstripe-omnipay-ui)
 [![Latest Stable Version](https://poser.pugx.org/bummzack/silverstripe-omnipay-ui/v/stable)](https://packagist.org/packages/bummzack/silverstripe-omnipay-ui)
 
