@@ -5,7 +5,8 @@
 	"license": "BSD-3-Clause",
 	"keywords": ["silverstripe","payment","omnipay"],
 	"require": {
-		"silverstripe/silverstripe-omnipay": "^3@dev"
+		"silverstripe/silverstripe-omnipay": "^3@dev",
+        "silverstripe/admin": "^1.0"
 	},
     "require-dev": {
         "phpunit/PHPUnit": "^5.7"
