@@ -5,11 +5,11 @@
 	"license": "BSD-3-Clause",
 	"keywords": ["silverstripe","payment","omnipay"],
 	"require": {
-		"silverstripe/silverstripe-omnipay": "^3@dev",
+		"silverstripe/silverstripe-omnipay": "^3.0",
         "silverstripe/admin": "^1.0"
 	},
     "require-dev": {
-        "phpunit/PHPUnit": "^5.7"
+        "phpunit/phpunit": "^5.7"
     },
     "extra" : {
 		"installer-name": "omnipay-ui",
