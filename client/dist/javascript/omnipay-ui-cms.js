@@ -28,7 +28,7 @@
           dialog.on("change, keyup", "input[type=text]", function () {
             var numVal = $(this).val();
             $("#PaymentDialog_ConfirmButton").button(
-              numVal.match(/^\d+\.?\d*$/) && parseFloat(numVal) <= config.maxAmountNum ? "enable" : "disable"
+              numVal.match(/^\d+[\.\,]?\d*$/) && parseFloat(numVal) <= config.maxAmountNum ? "enable" : "disable"
             );
           });
         }
@@ -55,6 +55,11 @@
                 var value = $("#PaymentDialog_AmountField").length > 0
                   ? ($("#PaymentDialog_AmountField").val() || "-1")
                   : '';
+
+                //replace , with . in value if there is only one comma and no dot
+                if (value.match(/,/g) && !value.match(/\./g) && value.match(/,/g).length == 1) {
+                  value = value.replace(/,/g, '.');
+                }
 
                 self.getGridField().reload({
                   data: [
